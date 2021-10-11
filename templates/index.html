@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Naver Realtime Test</h1>
+    <hr>
+    <div id="news-box">
+       
+    </div>
+   
+    <script>
+        const eventSource = new EventSource("http://localhost:8080/news");
+       
+        eventSource.onmessage = (event) => {
+
+          naverNews = JSON.parse(event.data);
+          console.log(naverNews);
+            
+          $("#news-box").append("<h3>"+naverNews.company+"</h3>");
+          $("#news-box").append("<h3>"+naverNews.title+"</h3>");
+          $("#news-box").append("<h3>"+naverNews.createdAt+"</h3>");
+            
+        }
+        
+
+        
+            
+        
+            
+           
+    </script>
+</body>
+</html>
